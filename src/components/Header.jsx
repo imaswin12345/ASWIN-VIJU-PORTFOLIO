@@ -7,17 +7,46 @@ function Header() {
       expand="lg"
       variant="light"
       fixed="top"
-      className="bg-transparent backdrop-blur-md shadow-none py-3"
+      className="bg-transparent backdrop-blur-md  py-2"
     >
       <Container>
-        <Navbar.Brand className="fw-bold fs-3 text-dark-700">ASWIN VIJU</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Brand 
+          className="font-bold text-xl md:text-2xl text-gray-800 hover:text-violet-600 transition-colors"
+        >
+          ASWIN VIJU
+        </Navbar.Brand>
+        <Navbar.Toggle 
+          aria-controls="basic-navbar-nav" 
+          className="border-0 focus:ring-0 focus:shadow-none"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="#about" className="text-dark-600">About</Nav.Link>
-            <Nav.Link href="#projects" className="text-dark-400">Projects</Nav.Link>
-            <Nav.Link href="#skills" className="text-dark-400">Skills</Nav.Link>
-            <Nav.Link href="#contacts" className="text-dark-400">Contacts</Nav.Link>
+          <Nav className="ms-auto items-center gap-1 md:gap-3">
+            <Nav.Link 
+              href="#about" 
+              className="text-gray-700 hover:text-violet-600 px-3 py-2 rounded-md text-sm md:text-base font-medium transition-colors"
+            >
+              About
+            </Nav.Link>
+            <Nav.Link 
+              href="#projects" 
+              className="text-gray-700 hover:text-violet-600 px-3 py-2 rounded-md text-sm md:text-base font-medium transition-colors"
+            >
+              Projects
+            </Nav.Link>
+            <Nav.Link 
+              href="#skills" 
+              className="text-gray-700 hover:text-violet-600 px-3 py-2 rounded-md text-sm md:text-base font-medium transition-colors"
+            >
+              Skills
+            </Nav.Link>
+            <Nav.Link 
+              href="#contacts" 
+              className="text-gray-700 hover:text-violet-600 px-3 py-2 rounded-md text-sm md:text-base font-medium transition-colors"
+            >
+              Contact
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
