@@ -80,7 +80,7 @@ function Projects() {
               image={videoapp}
               description="Video app with upload and history."
               tech="React, Tailwind, JSON Server,Axios Api"
-              link="https://melodic-rugelach-91e78d.netlify.app"
+              link="https://leafy-wisp-4f832a.netlify.app/"
               github="https://github.com/imaswin12345/VideoApp"
             />
           </motion.div>
