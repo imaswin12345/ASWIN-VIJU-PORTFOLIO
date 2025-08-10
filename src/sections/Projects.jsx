@@ -4,6 +4,8 @@ import ProjectCard from '../components/ProjectCard';
 import videoapp from '../assets/videoapp.png';
 import gcart from '../assets/gcart.png';
 import netflix from '../assets/netflix.png';
+import memory from '../assets/memory.png';
+
 
 function Projects() {
   // Animation variants
@@ -54,7 +56,7 @@ function Projects() {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5 }}
     >
-      <div className='container mx-auto px-4'>
+      <div className='container mx-auto px-7'>
         <motion.div 
           className='text-center mb-8 md:mb-16'
           variants={title}
@@ -62,7 +64,7 @@ function Projects() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h3 className='text-3xl md:text-4xl font-bold text-violet-600'>PROJECTS</h3>
+          <h3 className='text-3xl md:text-4xl font-bold text-violet-500'>PROJECTS</h3>
         </motion.div>
 
         <motion.div 
@@ -102,6 +104,17 @@ function Projects() {
               tech="React,Bootsrap,Css,API fetch"
               link="https://magenta-nougat-470c6b.netlify.app/"
               github="https://github.com/imaswin12345/NetflixClone"
+            />
+          </motion.div>
+
+           <motion.div variants={item}>
+            <ProjectCard
+              title="MEMORY_GAME(React Hooks)"
+              image={memory}
+              description="Created a simple memory game with the help of react Hooks" 
+              tech="React,Bootsrap"
+              link="https://memorygamessss.netlify.app/"
+              github="https://github.com/imaswin12345/memory-game"
             />
           </motion.div>
         </motion.div>

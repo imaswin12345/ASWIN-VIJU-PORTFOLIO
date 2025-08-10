@@ -8,6 +8,7 @@ import bst from '../assets/techStacks/bootsrap.png';
 import react from '../assets/techStacks/react.png';
 import Tailwind from '../assets/techStacks/tailwind.png';
 import redux from '../assets/techStacks/redux.png';
+import azios from '../assets/social/Azios.png'
 
 function About() {
   // Animation variants
@@ -56,7 +57,7 @@ function About() {
       scale: 1.1,
       transition: {
         type: "spring",
-        stiffness: 300,
+        stiffness: 700,
         damping: 10
       }
     }
@@ -120,7 +121,7 @@ function About() {
                   className='flex flex-wrap gap-3 items-center mt-3'
                   variants={container}
                 >
-                  {[html, css, js, react, Tailwind, redux, bst].map((icon, index) => (
+                  {[html, css, js, react, Tailwind,azios, redux, bst].map((icon, index) => (
                     <motion.img
                       key={index}
                       src={icon}

@@ -4,6 +4,7 @@ import insta from '../assets/social/insta.png';
 import git from '../assets/social/anyrgb.com.png';
 import linkd from '../assets/social/linkd.png';
 import whats from '../assets/social/whatapp.png';
+import thought from '../assets/social/thought.png'
 
 function Intro() {
   // Animation variants
@@ -57,14 +58,14 @@ function Intro() {
           animate="visible"
         >
           <motion.h2 
-            className="text-xl md:text-3xl text-violet-600 mb-2"
+            className="text-2xl md:text-4xl text-yellow-500 mb-2"
             variants={item}
           >
-            — Hello I am
+            — Hello <span className='text-green-500'>i am</span>
           </motion.h2>
           
           <motion.h1 
-            className="text-4xl md:text-6xl font-extrabold text-gray-1000 mb-4"
+            className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4"
             variants={item}
           >
             Aswin Viju
@@ -90,7 +91,13 @@ function Intro() {
             className="text-center md:text-left mt-5"
             variants={item}
           >
-            <h3 className='font-bold text-green-500'>CONNECT WITH ME</h3>
+            <div className=" flex items-center gap-2 justify-center">
+            <h3 className='font-bold text-green-500'>CONNECT <span className='text-yellow-500'>WITH</span> ME </h3>
+            {/* <img 
+            style={{ height: "100px", width: "100px" }}
+            src={thought} 
+            alt="" /> */}
+            </div>
           </motion.div>
 
           {/* Socials */}
