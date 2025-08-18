@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import aswin from '../assets/aswin.jpg';
+import aswin from '../assets/screensho/aswin.jpg';
 import html from '../assets/techStacks/html.png';
 import js from '../assets/techStacks/javascrip.png';
 import css from '../assets/techStacks/css.png';
@@ -71,7 +71,7 @@ function About() {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5 }}
     >
-      <section className='py-8 md:py-16 text-dark bg-light bg-gradient-to-br from-green-300 via-yellow-50'>
+      <section className='py-24 md:py-36 text-dark bg-light bg-gradient-to-br from-green-300 via-yellow-80 to-orange-70'>
         <div className='container mx-auto px-4 md:px-9'>
           <motion.div 
             className='flex flex-col md:flex-row items-center gap-6 md:gap-10'
@@ -136,6 +136,7 @@ function About() {
             </motion.div>
 
             {/* Right side of the about -my image */}
+            
             <motion.div 
               className='md:w-1/2 flex justify-center mt-6 md:mt-0'
               variants={image}

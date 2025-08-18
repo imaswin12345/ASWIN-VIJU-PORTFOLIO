@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
-import videoapp from '../assets/videoapp.png';
-import gcart from '../assets/gcart.png';
-import netflix from '../assets/netflix.png';
-import memory from '../assets/memory.png';
+import videoapp from '../assets/screensho/videoapp.png';
+import gcart from '../assets/screensho/gcart.png';
+import netflix from '../assets/screensho/netflix.png';
+import memory from '../assets/screensho/memory.png';
 
 
 function Projects() {
@@ -50,7 +50,7 @@ function Projects() {
   return (
     <motion.div 
       id='projects' 
-      className='py-8 bg-gradient-to-br from-green-300 via-yellow-80 to-orange-70'
+      className='scroll-mb-5 py-20 md:py-32  bg-gradient-to-br from-green-300 via-yellow-80 to-green-200'
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
