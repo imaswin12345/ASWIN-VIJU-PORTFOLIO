@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [expanded, setExpanded] = useState(false);
@@ -22,8 +23,8 @@ function Header() {
       className="bg-transparent backdrop-blur-md py-2"
     >
       <Container>
-        <Navbar.Brand className="font-bold text-xl md:text-2xl text-gray-800 hover:text-violet-600 transition-colors">
-          ASWIN VIJU
+        <Navbar.Brand >
+         <Link style={{textDecoration:'none'}} onClick={()=>handleNavClick('aswin')} className="font-bold text-xl md:text-2xl text-gray-800 hover:text-red-600 transition-colors"> ASWIN VIJU</Link>
         </Navbar.Brand>
 
         <Navbar.Toggle

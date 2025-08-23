@@ -48,6 +48,7 @@ function Intro() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
+       id='aswin'
     >
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-8 py-8">
         {/* Left Side - Text */}
