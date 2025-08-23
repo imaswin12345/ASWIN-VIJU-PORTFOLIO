@@ -24,7 +24,7 @@ function Header() {
     >
       <Container>
         <Navbar.Brand >
-         <Link style={{textDecoration:'none'}} onClick={()=>handleNavClick('aswin')} className="font-bold text-xl md:text-2xl text-gray-800 hover:text-red-600 transition-colors"> ASWIN VIJU</Link>
+         <Link style={{textDecoration:'none'}} onClick={()=>handleNavClick('aswin')} className="font-bold text-xl md:text-2xl text-gray-800  transition-colors"> ASWIN VIJU</Link>
         </Navbar.Brand>
 
         <Navbar.Toggle
