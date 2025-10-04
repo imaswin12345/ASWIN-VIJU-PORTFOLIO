@@ -1,158 +1,190 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import aswin from '../assets/screensho/aswin.jpg';
-import html from '../assets/techStacks/html.png';
-import js from '../assets/techStacks/javascrip.png';
-import css from '../assets/techStacks/css.png';
-import bst from '../assets/techStacks/bootsrap.png';
-import react from '../assets/techStacks/react.png';
-import Tailwind from '../assets/techStacks/tailwind.png';
-import redux from '../assets/techStacks/redux.png';
-import azios from '../assets/social/Azios.png'
+import { Code, LayoutList, Terminal, Feather, Zap, Redo2, Layers, Shield } from 'lucide-react';
+import Aswin  from "../assets/screensho/aswin.jpg"
+
+const techStack = [
+  { name: 'HTML', icon: Terminal },
+  { name: 'CSS', icon: LayoutList },
+  { name: 'JavaScript', icon: Code },
+  { name: 'React', icon: Feather },
+  { name: 'Tailwind CSS', icon: Zap },
+  { name: 'Redux', icon: Redo2 },
+  { name: 'Axios', icon: Layers },
+  { name: 'Bootstrap', icon: Shield }
+];
+
+const profileImageUrl = "https://placehold.co/400x500/0a0a0a/ffffff?text=ASWIN+VIJU";
 
 function About() {
-  // Animation variants
-  const container = {
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        when: "beforeChildren"
+        staggerChildren: 0.12,
+        delayChildren: 0.2
       }
     }
   };
 
-  const item = {
-    hidden: { y: 30, opacity: 0 },
+  const itemVariants = {
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 10,
-        duration: 0.8
+        stiffness: 70,
+        damping: 12
       }
     }
   };
 
-  const image = {
-    hidden: { scale: 0.9, opacity: 0 },
+  const imageVariants = {
+    hidden: { x: -50, opacity: 0 },
     visible: {
-      scale: 1,
+      x: 0,
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 80,
-        damping: 10,
-        duration: 0.8
-      }
-    }
-  };
-
-  const techIcon = {
-    hover: {
-      y: -5,
-      scale: 1.1,
-      transition: {
-        type: "spring",
-        stiffness: 700,
-        damping: 10
+        stiffness: 60,
+        damping: 15
       }
     }
   };
 
   return (
-    <motion.div 
-      id='about'
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5 }}
-    >
-      <section className='py-24 md:py-36 text-dark bg-light bg-gradient-to-br from-green-300 via-yellow-80 to-orange-70'>
-        <div className='container mx-auto px-4 md:px-9'>
-          <motion.div 
-            className='flex flex-col md:flex-row items-center gap-6 md:gap-10'
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {/* left side of the about */}
-            <motion.div 
-              className='md:w-1/2'
-              variants={container}
-            >
-              <motion.h2 
-                className='text-2xl md:text-3xl font-bold text-violet-700 mb-6 md:mb-10'
-                variants={item}
+    <div id='about' className='min-h-screen bg-black text-white relative overflow-hidden'>
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+
+      {/* Gradient orbs */}
+      <div className="absolute top-40 left-20 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+      <div className="absolute bottom-40 right-20 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+
+      <div className='container mx-auto px-6 py-24 md:py-32 max-w-7xl relative z-10'>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className='grid grid-cols-1 lg:grid-cols-12 gap-16 items-start'
+        >
+          {/* Left Side - Image and Number */}
+          <div className='lg:col-span-5'>
+            <motion.div variants={itemVariants} className="mb-8">
+              <span className="text-gray-600 text-sm tracking-widest uppercase">— About me</span>
+            </motion.div>
+
+            <motion.div variants={imageVariants} className='relative'>
+              {/* Large number behind image */}
+              <motion.div
+                className="absolute -left-8 -top-8 text-[10rem] font-bold text-transparent z-0"
+                style={{
+                  WebkitTextStroke: '2px rgba(255,255,255,0.05)'
+                }}
               >
-                ABOUT ME
-              </motion.h2>
-              
-              <motion.p 
-                className='text-gray-900 text-lg md:text-xl'
-                variants={item}
-              >
-                Hi i am - <span className='font-semibold'>Aswin</span> — a passionate front-end developer based in Kochi, India. I love building clean, responsive user interfaces using React, Tailwind, and modern web technologies. I'm currently focused on full-stack development and crafting real-world portfolio projects.
-              </motion.p>
-              
-              <motion.p 
-                className='mt-4 text-gray-700 text-lg md:text-xl'
-                variants={item}
-              >
-                When I'm not coding, you'll find me exploring new tech trends, improving my skills, or playing around with design ideas. Let's build something amazing!
-              </motion.p>
-              
-              <motion.div 
-                className='mt-6'
-                variants={item}
-              >
-                <motion.h1 
-                  className='text-xl md:text-2xl text-yellow-500'
-                  variants={item}
-                >
-                  Tech Stack <span className='font-semibold text-green-500'>Front-End</span>
-                </motion.h1>
+                02
+              </motion.div>
+
+              {/* Profile Image */}
+              <div className='relative z-10'>
+                <motion.img
+                  src={Aswin}
+                  alt="Aswin Viju"
+                  className='w-full max-w-md rounded-lg object-cover'
+                  style={{
+                    boxShadow: '0 0 0 1px rgba(255,255,255,0.1)'
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                />
                 
+                {/* Decorative corner accent */}
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 border-r border-b border-purple-500/50"></div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Side - Content */}
+          <div className='lg:col-span-7'>
+            <motion.div variants={containerVariants}>
+              {/* Title */}
+              <motion.h1 
+                className='text-5xl md:text-6xl lg:text-7xl font-bold mb-8'
+                variants={itemVariants}
+              >
+                WHO I <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">AM</span>
+              </motion.h1>
+
+              {/* Decorative line */}
+              <motion.div
+                variants={itemVariants}
+                className="h-px bg-gradient-to-r from-purple-500 to-transparent mb-10 max-w-md"
+              ></motion.div>
+
+              {/* Description */}
+              <motion.div variants={itemVariants} className='space-y-6 mb-12'>
+                <p className='text-gray-400 text-lg leading-relaxed'>
+                  Hello, I'm <span className='font-semibold text-white'>Aswin Viju</span> — an aspiring Full-Stack Developer based in Kochi, India. I'm driven by a passion for transforming complex ideas into clean, highly responsive, and user-friendly web interfaces.
+                </p>
+                
+                <p className='text-gray-500 text-base leading-relaxed'>
+                  I focus on modern frameworks like <span className='text-purple-400'>React</span> and design systems like <span className='text-purple-400'>Tailwind CSS</span>. My current goal is to dive deeper into the backend and design principles to become a comprehensive full-stack developer capable of building polished, end-to-end products.
+                </p>
+              </motion.div>
+
+              {/* Tech Stack Section */}
+              <motion.div variants={itemVariants}>
+                <div className='mb-6'>
+                  <h3 className='text-gray-600 text-sm tracking-widest uppercase mb-2'>Tech Stack</h3>
+                  <h2 className='text-2xl md:text-3xl font-bold text-white'>My Core Technologies</h2>
+                </div>
+
+                {/* Tech Icons Grid */}
                 <motion.div 
-                  className='flex flex-wrap gap-3 items-center mt-3'
-                  variants={container}
+                  className='grid grid-cols-4 md:grid-cols-8 gap-4'
+                  variants={containerVariants}
                 >
-                  {[html, css, js, react, Tailwind,azios, redux, bst].map((icon, index) => (
-                    <motion.img
+                  {techStack.map((tech, index) => (
+                    <motion.div
                       key={index}
-                      src={icon}
-                      alt="Tech icon"
-                      className='w-8 md:w-10 h-auto'
-                      variants={techIcon}
-                      whileHover="hover"
-                    />
+                      className='group relative flex flex-col items-center justify-center p-4 rounded-lg border border-gray-800 bg-gray-900/30 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300'
+                      variants={itemVariants}
+                      whileHover={{ 
+                        y: -8,
+                        scale: 1.05,
+                        transition: { type: "spring", stiffness: 400, damping: 10 }
+                      }}
+                    >
+                      <tech.icon className='w-8 h-8 text-gray-500 group-hover:text-purple-400 transition-colors duration-300' />
+                      <span className='text-[10px] mt-2 text-gray-600 text-center group-hover:text-white transition-colors duration-300'>{tech.name}</span>
+                      
+                      {/* Hover glow effect */}
+                      <div className="absolute inset-0 rounded-lg bg-purple-500/0 group-hover:bg-purple-500/5 transition-all duration-300"></div>
+                    </motion.div>
                   ))}
                 </motion.div>
               </motion.div>
-            </motion.div>
 
-            {/* Right side of the about -my image */}
-            
-            <motion.div 
-              className='md:w-1/2 flex justify-center mt-6 md:mt-0'
-              variants={image}
-            >
-              <motion.img
-                src={aswin}
-                alt="Aswin"
-                className='rounded-lg shadow-md object-cover w-64 md:w-[300px] bg-dark'
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              />
+              {/* Call to action */}
+              <motion.div variants={itemVariants} className='mt-12'>
+                <p className='text-gray-500 text-sm'>
+                  Let's connect and build something <span className='text-purple-400 font-semibold'>impactful</span> together.
+                </p>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-    </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
   );
 }
 
