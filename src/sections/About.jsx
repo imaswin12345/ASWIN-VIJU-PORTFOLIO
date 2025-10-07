@@ -17,45 +17,73 @@ const techStack = [
 const profileImageUrl = "https://placehold.co/400x500/0a0a0a/ffffff?text=ASWIN+VIJU";
 
 function About() {
-  const containerVariants = {
+const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.2
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 40, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
-        stiffness: 70,
-        damping: 12
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
 
   const imageVariants = {
-    hidden: { x: -50, opacity: 0 },
+    hidden: { x: -30, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
       transition: {
-        type: "spring",
-        stiffness: 60,
-        damping: 15
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
 
   return (
     <div id='about' className='min-h-screen bg-black text-white relative overflow-hidden'>
+      {/* Wandering stars background */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: Math.random() * 3 + 1 + 'px',
+              height: Math.random() * 3 + 1 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+              opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.3 + 0.1, Math.random() * 0.5 + 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 50,
+            }}
+          />
+        ))}
+      </div>
+      
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -66,7 +94,7 @@ function About() {
       </div>
 
       {/* Gradient orbs */}
-      <div className="absolute top-40 left-20 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+      <div className="absolute top-40 left-20 w-96 h-96 bg-yellow-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
       <div className="absolute bottom-40 right-20 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
 
       <div className='container mx-auto px-6 py-24 md:py-32 max-w-7xl relative z-10'>
@@ -108,7 +136,7 @@ function About() {
                 />
                 
                 {/* Decorative corner accent */}
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 border-r border-b border-purple-500/50"></div>
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 border-r border-b border-yellow-500/50"></div>
               </div>
             </motion.div>
           </div>
@@ -121,13 +149,13 @@ function About() {
                 className='text-5xl md:text-6xl lg:text-7xl font-bold mb-8'
                 variants={itemVariants}
               >
-                WHO I <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">AM</span>
+                WHO I <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-400">AM</span>
               </motion.h1>
 
               {/* Decorative line */}
               <motion.div
                 variants={itemVariants}
-                className="h-px bg-gradient-to-r from-purple-500 to-transparent mb-10 max-w-md"
+                className="h-px bg-gradient-to-r from-yellow-500 to-transparent mb-10 max-w-md"
               ></motion.div>
 
               {/* Description */}
@@ -137,7 +165,7 @@ function About() {
                 </p>
                 
                 <p className='text-gray-500 text-base leading-relaxed'>
-                  I focus on modern frameworks like <span className='text-purple-400'>React</span> and design systems like <span className='text-purple-400'>Tailwind CSS</span>. My current goal is to dive deeper into the backend and design principles to become a comprehensive full-stack developer capable of building polished, end-to-end products.
+                  I focus on modern frameworks like <span className='text-yellow-400'>React</span> and design systems like <span className='text-yellow-400'>Tailwind CSS</span>. My current goal is to dive deeper into the backend and design principles to become a comprehensive full-stack developer capable of building polished, end-to-end products.
                 </p>
               </motion.div>
 
@@ -156,7 +184,7 @@ function About() {
                   {techStack.map((tech, index) => (
                     <motion.div
                       key={index}
-                      className='group relative flex flex-col items-center justify-center p-4 rounded-lg border border-gray-800 bg-gray-900/30 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300'
+                      className='group relative flex flex-col items-center justify-center p-4 rounded-lg border border-gray-800 bg-gray-900/30 backdrop-blur-sm hover:border-green-500/50 transition-all duration-300'
                       variants={itemVariants}
                       whileHover={{ 
                         y: -8,
@@ -164,11 +192,11 @@ function About() {
                         transition: { type: "spring", stiffness: 400, damping: 10 }
                       }}
                     >
-                      <tech.icon className='w-8 h-8 text-gray-500 group-hover:text-purple-400 transition-colors duration-300' />
+                      <tech.icon className='w-8 h-8 text-gray-500 group-hover:text-yellow-400 transition-colors duration-300' />
                       <span className='text-[10px] mt-2 text-gray-600 text-center group-hover:text-white transition-colors duration-300'>{tech.name}</span>
                       
                       {/* Hover glow effect */}
-                      <div className="absolute inset-0 rounded-lg bg-purple-500/0 group-hover:bg-purple-500/5 transition-all duration-300"></div>
+                      <div className="absolute inset-0 rounded-lg bg-yellow-500/0 group-hover:bg-yellow-500/5 transition-all duration-300"></div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -177,7 +205,7 @@ function About() {
               {/* Call to action */}
               <motion.div variants={itemVariants} className='mt-12'>
                 <p className='text-gray-500 text-sm'>
-                  Let's connect and build something <span className='text-purple-400 font-semibold'>impactful</span> together.
+                  Let's connect and build something <span className='text-yellow-400 font-semibold'>impactful</span> together.
                 </p>
               </motion.div>
             </motion.div>

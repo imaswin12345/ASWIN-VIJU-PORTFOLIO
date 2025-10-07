@@ -18,7 +18,34 @@ function Footer() {
       transition={{ duration: 0.5 }}
     >
       {/* Subtle gradient at top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+        {/* Wandering stars background */}
+            <div className="absolute inset-0">
+              {[...Array(50)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full bg-white"
+                  style={{
+                    width: Math.random() * 3 + 1 + 'px',
+                    height: Math.random() * 3 + 1 + 'px',
+                    top: Math.random() * 100 + '%',
+                    left: Math.random() * 100 + '%',
+                    opacity: Math.random() * 0.5 + 0.3,
+                  }}
+                  animate={{
+                    x: [0, Math.random() * 100 - 50],
+                    y: [0, Math.random() * 100 - 50],
+                    opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.3 + 0.1, Math.random() * 0.5 + 0.3],
+                  }}
+                  transition={{
+                    duration: Math.random() * 10 + 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: Math.random() * 50,
+                  }}
+                />
+              ))}
+            </div>
 
       <div className="container mx-auto px-6 py-12 max-w-7xl relative z-10">
         <div className="flex flex-col items-center">
@@ -32,7 +59,7 @@ function Footer() {
           >
             <h3 className="text-2xl font-bold">
               <span className="text-white">ASWIN</span>{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">VIJU</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-400">VIJU</span>
             </h3>
           </motion.div>
 
@@ -80,18 +107,18 @@ function Footer() {
             className="text-xs text-gray-600 flex items-center gap-1"
           >
             Built with{' '}
-            <Heart className="w-3 h-3 text-purple-400 fill-purple-400 inline-block animate-pulse" />{' '}
+            <Heart className="w-3 h-3 text-yellow-400 fill-purple-400 inline-block animate-pulse" />{' '}
             using{' '}
-            <span className="text-purple-400 font-semibold">React</span>
+            <span className="text-yellow-400 font-semibold">React</span>
             {' '}&{' '}
-            <span className="text-pink-400 font-semibold">Framer Motion</span>
+            <span className="text-yellow-400 font-semibold">Framer Motion</span>
           </motion.p>
         </div>
 
         {/* Scroll to Top Button */}
         <motion.button
           onClick={scrollToTop}
-          className="absolute bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+          className="absolute bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-500 flex items-center justify-center text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
           initial={{ scale: 0, rotate: -180 }}
           whileInView={{ scale: 1, rotate: 0 }}
           viewport={{ once: true }}

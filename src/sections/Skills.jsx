@@ -6,7 +6,7 @@ const skillCategories = [
   {
     title: "Frontend",
     icon: Code,
-    color: "from-blue-500 to-cyan-500",
+    color: "from-yellow-500 to-yellow-500",
     skills: [
       { name: "HTML", level: 90 },
       { name: "CSS", level: 85 },
@@ -18,7 +18,7 @@ const skillCategories = [
   {
     title: "Styling",
     icon: Palette,
-    color: "from-purple-500 to-pink-500",
+    color: "from-yellow-500 to-yellow-500",
     skills: [
       { name: "Tailwind CSS", level: 90 },
       { name: "Bootstrap", level: 85 },
@@ -28,7 +28,7 @@ const skillCategories = [
   {
     title: "Backend",
     icon: Server,
-    color: "from-emerald-500 to-teal-500",
+    color: "from-yellow-500 to-yellow-500",
     skills: [
       { name: "Node.js", level: 75 },
       { name: "Axios", level: 88 },
@@ -37,7 +37,7 @@ const skillCategories = [
   {
     title: "Libraries",
     icon: Layers,
-    color: "from-orange-500 to-amber-500",
+    color: "from-yellow-500 to-yellow-500",
     skills: [
       { name: "React Konva", level: 78 },
       { name: "Framer Motion", level: 85 },
@@ -60,6 +60,35 @@ const SkillCard = ({ category, index }) => {
       className="group relative"
     >
       <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900/50 to-gray-900/30 border border-gray-800 hover:border-gray-700 transition-all duration-500 backdrop-blur-sm p-6">
+       
+      {/* Wandering stars background */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: Math.random() * 3 + 1 + 'px',
+              height: Math.random() * 3 + 1 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+              opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.3 + 0.1, Math.random() * 0.5 + 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 50,
+            }}
+          />
+        ))}
+      </div>
+       
         {/* Icon and Title */}
         <div className="flex items-center gap-4 mb-6">
           <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.color} p-3 flex items-center justify-center`}>
@@ -106,6 +135,34 @@ const SkillCard = ({ category, index }) => {
 function Skills() {
   return (
     <div id='skills' className='min-h-screen bg-black text-white relative overflow-hidden'>
+      {/* Wandering stars background */}
+            <div className="absolute inset-0">
+              {[...Array(50)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full bg-white"
+                  style={{
+                    width: Math.random() * 3 + 1 + 'px',
+                    height: Math.random() * 3 + 1 + 'px',
+                    top: Math.random() * 100 + '%',
+                    left: Math.random() * 100 + '%',
+                    opacity: Math.random() * 0.5 + 0.3,
+                  }}
+                  animate={{
+                    x: [0, Math.random() * 100 - 50],
+                    y: [0, Math.random() * 100 - 50],
+                    opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.3 + 0.1, Math.random() * 0.5 + 0.3],
+                  }}
+                  transition={{
+                    duration: Math.random() * 10 + 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: Math.random() * 5,
+                  }}
+                />
+              ))}
+            </div>
+      
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -117,7 +174,7 @@ function Skills() {
 
       {/* Gradient orbs */}
       <div className="absolute top-40 left-40 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-      <div className="absolute bottom-20 right-40 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+      <div className="absolute bottom-20 right-40 w-96 h-96 bg-yellow-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
 
       <div className='container mx-auto px-6 py-24 md:py-32 max-w-7xl relative z-10'>
         {/* Header */}
@@ -130,14 +187,14 @@ function Skills() {
         >
           <span className="text-gray-600 text-sm tracking-widest uppercase">— My expertise</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mt-4 mb-6">
-            SKILLS & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">ABILITIES</span>
+            SKILLS & <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-400">ABILITIES</span>
           </h1>
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "200px" }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="h-px bg-gradient-to-r from-purple-500 to-transparent"
+            className="h-px bg-gradient-to-r from-yellow-500 to-transparent"
           ></motion.div>
 
           {/* Large background number */}
@@ -178,7 +235,7 @@ function Skills() {
           ].map((stat, index) => (
             <div key={index} className="text-center p-6 rounded-xl border border-gray-800 bg-gray-900/30 backdrop-blur-sm">
               <motion.h3
-                className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2"
+                className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-400 mb-2"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}

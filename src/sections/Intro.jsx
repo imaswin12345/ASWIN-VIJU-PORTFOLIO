@@ -7,7 +7,7 @@ const SocialIcon = ({ href, children }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="w-12 h-12 border border-gray-700 rounded-full flex items-center justify-center text-white hover:border-white hover:bg-white hover:text-black transition-all duration-300"
+    className="w-12 h-12 border border-gray-700 rounded-full flex items-center justify-center text-white hover:border-yellow-100 hover:bg-yellow-400 hover:text-yellow transition-all duration-300"
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.95 }}
   >
@@ -52,26 +52,36 @@ function Intro() {
   };
 
   return (
-    // -------------------------------------------------------------------
-    // KEY CHANGE: Added pt-28 to the main container
-    // This adds top padding to push content down past the fixed header.
-    // The min-h-screen should be adjusted to pt-28 (7rem) + h-screen,
-    // so we use min-h-[calc(100vh+7rem)] to ensure the scroll indicator
-    // is correctly placed at the bottom *of the visible screen*.
-    // However, simply using a large padding and keeping min-h-screen works well
-    // to push the content down while still centering it.
-    // -------------------------------------------------------------------
     <div 
       className="min-h-screen bg-black text-white flex items-center justify-center px-6 relative overflow-hidden pt-28 md:pt-0" 
       id="aswin"
     >
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}></div>
+      {/* Wandering stars background */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: Math.random() * 3 + 1 + 'px',
+              height: Math.random() * 3 + 1 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+              opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.3 + 0.1, Math.random() * 0.5 + 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 50,
+            }}
+          />
+        ))}
       </div>
 
       {/* Gradient orbs for depth */}
@@ -83,38 +93,37 @@ function Intro() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          // Reduced mb-8 for a slightly tighter mobile view
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-0 md:mb-8"
         >
           {/* Left side - Main content */}
           <div className="lg:col-span-7">
             {/* Small intro text */}
-            <motion.div variants={itemVariants} className="mb-4"> {/* Reduced mb-8 to mb-4 */}
+            <motion.div variants={itemVariants} className="mb-4">
               <span className="text-gray-500 text-sm tracking-widest uppercase">— Hello, I am</span>
             </motion.div>
 
             {/* Large name */}
-            <motion.div variants={itemVariants} className="mb-4"> {/* Reduced mb-8 to mb-4 */}
+            <motion.div variants={itemVariants} className="mb-4">
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tight">
-                ASWIN <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">VIJU</span>
+                ASWIN <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-400 to-yellow-400">VIJU</span>
               </h1>
             </motion.div>
 
             {/* Decorative line */}
             <motion.div
               variants={lineVariants}
-              className="h-px bg-gradient-to-r from-purple-500 via-pink-500 to-transparent mb-6" // Reduced mb-8 to mb-6
+              className="h-px bg-gradient-to-r from-yellow-500 via-yellow-500 to-transparent mb-6"
             ></motion.div>
 
             {/* Title */}
-            <motion.div variants={itemVariants} className="mb-4"> {/* Reduced mb-6 to mb-4 */}
+            <motion.div variants={itemVariants} className="mb-4">
               <h2 className="text-2xl md:text-3xl font-light text-gray-300">
                 Aspiring <span className="font-semibold text-white">Full-Stack Developer</span>
               </h2>
             </motion.div>
 
             {/* Description */}
-            <motion.div variants={itemVariants} className="mb-8"> {/* Reduced mb-12 to mb-8 */}
+            <motion.div variants={itemVariants} className="mb-8">
               <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
                 I'm passionate about creating digital experiences and continuously improving my skills.
                 Currently aiming to become a full-stack developer while growing my design abilities
@@ -126,7 +135,6 @@ function Intro() {
             <motion.div variants={itemVariants}>
               <p className="text-gray-500 text-sm tracking-widest uppercase mb-4">Connect with me</p>
               <div className="flex gap-4">
-                {/* Social icons remain the same */}
                 <SocialIcon href="https://www.instagram.com/">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zM18.406 5.955c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -152,14 +160,13 @@ function Intro() {
           </div>
 
           {/* Right side - Number badge */}
-          {/* Hidden on mobile to prioritize main content */}
           <motion.div
             variants={itemVariants}
             className="hidden lg:col-span-5 lg:flex justify-center lg:justify-end"
           >
             <div className="relative">
               <motion.div
-                className="text-[16rem] font-bold text-transparent" // Kept large for desktop
+                className="text-[16rem] font-bold text-transparent"
                 style={{
                   WebkitTextStroke: '2px rgba(255,255,255,0.1)'
                 }}

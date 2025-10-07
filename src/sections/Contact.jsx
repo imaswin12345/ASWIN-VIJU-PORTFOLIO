@@ -30,33 +30,61 @@ function Contact() {
       title: "Email",
       value: "aswinviju900@gmail.com",
       link: "mailto:aswinviju900@gmail.com",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-yellow-500 to-yellow-500"
     },
     {
       icon: Phone,
       title: "Phone",
       value: "+91 6282830562 ",
       link: "tel:+91 6282830562",
-      color: "from-emerald-500 to-teal-500"
+      color: "from-yellow-500 to-yellow-500"
     },
     {
       icon: MapPin,
       title: "Location",
       value: "Kochi, Kerala, India",
       link: "#",
-      color: "from-purple-500 to-pink-500"
+      color: "from-yellow-500 to-yellow-500"
     }
   ];
 
   const socialLinks = [
-    { icon: Github, url: "https://github.com/", color: "hover:text-purple-400" },
-    { icon: Linkedin, url: "https://www.linkedin.com/", color: "hover:text-blue-400" },
-    { icon: Instagram, url: "https://www.instagram.com/", color: "hover:text-pink-400" },
-    { icon: MessageSquare, url: "https://wa.me/", color: "hover:text-emerald-400" }
+    { icon: Github, url: "https://github.com/", color: "hover:text-yellow-400" },
+    { icon: Linkedin, url: "https://www.linkedin.com/", color: "hover:text-yellow-400" },
+    { icon: Instagram, url: "https://www.instagram.com/", color: "hover:text-yellow-400" },
+    { icon: MessageSquare, url: "https://wa.me/", color: "hover:text-yellow-400" }
   ];
 
   return (
     <div id='contacts' className='min-h-screen bg-black text-white relative overflow-hidden'>
+      {/* Wandering stars background */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: Math.random() * 3 + 1 + 'px',
+              height: Math.random() * 3 + 1 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+              opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.3 + 0.1, Math.random() * 0.5 + 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 50,
+            }}
+          />
+        ))}
+      </div>
+      
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -67,8 +95,8 @@ function Contact() {
       </div>
 
       {/* Gradient orbs */}
-      <div className="absolute top-20 right-20 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-      <div className="absolute bottom-40 left-20 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-20 right-20 w-96 h-96 bg-yellow-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
+      <div className="absolute bottom-40 left-20 w-96 h-96 bg-yellow-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '1s' }}></div>
 
       <div className='container mx-auto px-6 py-24 md:py-32 max-w-7xl relative z-10'>
         {/* Header */}
@@ -81,14 +109,14 @@ function Contact() {
         >
           <span className="text-gray-600 text-sm tracking-widest uppercase">— Get in touch</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mt-4 mb-6">
-            LET'S <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">CONNECT</span>
+            LET'S <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-400">CONNECT</span>
           </h1>
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "200px" }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="h-px bg-gradient-to-r from-purple-500 to-transparent mx-auto"
+            className="h-px bg-gradient-to-r from-yellow-500 to-transparent mx-auto"
           ></motion.div>
 
           {/* Large background number */}
@@ -235,7 +263,7 @@ function Contact() {
               <motion.button
                 type="button"
                 onClick={handleSubmit}
-                className="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full py-4 bg-gradient-to-r from-yellow-500 to-yellow-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -254,7 +282,7 @@ function Contact() {
           className="mt-20 pt-8 border-t border-gray-800 text-center"
         >
           <p className="text-gray-500 text-sm">
-            © 2024 Aswin Viju. Built with <span className="text-purple-400">React</span> & <span className="text-pink-400">Framer Motion</span>
+            © 2024 Aswin Viju. Built with <span className="text-yellow-400">React</span> & <span className="text-yellow-400">Framer Motion</span>
           </p>
         </motion.div>
       </div>

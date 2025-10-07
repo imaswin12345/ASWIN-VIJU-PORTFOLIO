@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 
-function ProjectCard({ title, image, description, tech, link, github, index = 0, gradient = "from-purple-500 to-pink-500" }) {
+function ProjectCard({ title, image, description, tech, link, github, index = 0, gradient = "from-yellow-500 to-pink-500" }) {
   const item = {
     hidden: { y: 50, opacity: 0 },
     visible: {
@@ -28,6 +28,35 @@ function ProjectCard({ title, image, description, tech, link, github, index = 0,
     >
       {/* Card Container */}
       <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900/50 to-gray-900/30 border border-gray-800 hover:border-gray-700 transition-all duration-500 backdrop-blur-sm">
+        
+
+        {/* Wandering stars background */}
+              <div className="absolute inset-0">
+                {[...Array(50)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute rounded-full bg-white"
+                    style={{
+                      width: Math.random() * 3 + 1 + 'px',
+                      height: Math.random() * 3 + 1 + 'px',
+                      top: Math.random() * 100 + '%',
+                      left: Math.random() * 100 + '%',
+                      opacity: Math.random() * 0.5 + 0.3,
+                    }}
+                    animate={{
+                      x: [0, Math.random() * 100 - 50],
+                      y: [0, Math.random() * 100 - 50],
+                      opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.3 + 0.1, Math.random() * 0.5 + 0.3],
+                    }}
+                    transition={{
+                      duration: Math.random() * 10 + 10,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: Math.random() * 5,
+                    }}
+                  />
+                ))}
+              </div>
         
         {/* Image Container */}
         <div className="relative h-56 overflow-hidden">
@@ -85,11 +114,11 @@ function ProjectCard({ title, image, description, tech, link, github, index = 0,
         {/* Content Area */}
         <div className="p-6 relative">
           {/* Subtle glow effect */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
           
           {/* Title */}
           <motion.h3 
-            className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300"
+            className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-pink-400 transition-all duration-300"
             whileHover={{ x: 5 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -121,7 +150,7 @@ function ProjectCard({ title, image, description, tech, link, github, index = 0,
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r ${gradient} rounded-lg text-white font-semibold text-sm hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300`}
+                className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r ${gradient} rounded-lg text-white font-semibold text-sm hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300`}
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

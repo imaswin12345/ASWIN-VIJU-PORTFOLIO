@@ -58,6 +58,7 @@ function Header() {
       transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
     >
       <div className="container mx-auto px-6 max-w-7xl">
+        
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Name */}
@@ -70,10 +71,10 @@ function Header() {
               onClick={() => handleNavClick('aswin')} 
               className="text-xl font-bold cursor-pointer group flex items-center gap-2"
             >
-              <span className="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+              <span className="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-yellow-400 transition-all duration-300">
                 ASWIN
               </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-400">
                 VIJU
               </span>
             </button>
@@ -87,7 +88,7 @@ function Header() {
                 onClick={() => handleNavClick(item.id)}
                 className={`relative px-4 py-2 text-sm font-medium cursor-pointer transition-colors duration-300 ${
                   activeSection === item.id
-                    ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400'
+                    ? 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-400'
                     : 'text-gray-400 hover:text-white'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -100,7 +101,8 @@ function Header() {
             {/* CTA Button */}
             <motion
               onClick={() => handleNavClick('contacts')}
-              className="ml-4 px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold rounded-full cursor-pointer hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+              className="ml-4 px-6 py-2 bg-gradient-to-r from-yellow-500 to-yellow-500 text-white text-sm font-semibold rounded-full cursor-pointer hover:shadow-lg hover:shadow-yellow
+              -500/50 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -124,7 +126,7 @@ function Header() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="h-6 w-6 text-purple-400" />
+                    <X className="h-6 w-6 text-yellow-400" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -160,7 +162,7 @@ function Header() {
                   onClick={() => handleNavClick(item.id)}
                   className={`block px-4 py-3 rounded-lg text-base font-medium cursor-pointer transition-all duration-300 ${
                     activeSection === item.id
-                      ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-white border border-purple-500/30'
+                      ? 'bg-gradient-to-r from-yellow-500/20 to-yellow-500/20 text-white border border-yellow-500/30'
                       : 'text-gray-400 hover:bg-gray-800/50 hover:text-white'
                   }`}
                   initial={{ opacity: 0, x: -20 }}
@@ -172,8 +174,8 @@ function Header() {
                     <span>{item.name}</span>
                     {activeSection === item.id && (
                       <motion.div
-                        className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400"
-                        initial={{ scale: 0 }}
+                        className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-400"
+                        initial={{ scale: 0 }}yellow
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 500, damping: 15 }}
                       />
@@ -185,7 +187,7 @@ function Header() {
               {/* Mobile CTA */}
               <motion
                 onClick={() => handleNavClick('contacts')}
-                className="block mt-4 px-4 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold rounded-lg cursor-pointer hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                className="block mt-4 px-4 py-3 bg-gradient-to-r from-yellow-500 to-yellow-500 text-white text-center font-semibold rounded-lg cursor-pointer hover:shadow-lg hover:shadow-yellow-500/50 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}

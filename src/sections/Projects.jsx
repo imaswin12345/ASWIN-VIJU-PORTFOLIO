@@ -13,7 +13,7 @@ const projects = [
         tech: ["React", "Tailwind CSS", "JSON Server", "Axios"],
         link: "https://video-app1.vercel.app/",
         github: "https://github.com/imaswin12345/VideoApp",
-        color: "from-emerald-500 to-teal-500"
+        color: "from-yellow-400 to-yellow-500"
     },
     {
         title: "G-CART",
@@ -23,7 +23,7 @@ const projects = [
         tech: ["React", "Bootstrap", "Custom CSS"],
         link: "https://gcart-sigma.vercel.app/",
         github: "https://github.com/imaswin12345/Gcart",
-        color: "from-orange-500 to-amber-500"
+        color: "from-yellow-500 to-yellow-500"
     },
     {
         title: "NETFLIX",
@@ -33,7 +33,7 @@ const projects = [
         tech: ["React", "Bootstrap", "CSS", "Fetch API"],
         link: "https://magenta-nougat-470c6b.netlify.app/",
         github: "https://github.com/imaswin12345/NetflixClone",
-        color: "from-red-500 to-rose-500"
+        color: "from-yellow-500 to-yellow-500"
     },
     {
         title: "MEMORY",
@@ -43,7 +43,7 @@ const projects = [
         tech: ["React Hooks", "Bootstrap"],
         link: "https://memorygamessss.netlify.app/",
         github: "https://github.com/imaswin12345/memory-game",
-        color: "from-blue-500 to-cyan-500"
+        color: "from-yellow-500 to-yellow-500"
     }
 ];
 
@@ -116,7 +116,7 @@ const ProjectCard = ({ project, index }) => {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r ${project.color} rounded-lg text-white font-semibold text-sm hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300`}
+                            className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r ${project.color} rounded-lg text-white font-semibold text-sm hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300`}
                             whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.98 }}
                         >
@@ -142,6 +142,35 @@ const ProjectCard = ({ project, index }) => {
 function Projects() {
     return (
         <div id='projects' className='min-h-screen bg-black text-white relative overflow-hidden'>
+
+      {/* Wandering stars background */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: Math.random() * 3 + 1 + 'px',
+              height: Math.random() * 3 + 1 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+              opacity: [Math.random() * 0.5 + 0.3, Math.random() * 0.3 + 0.1, Math.random() * 0.5 + 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 50,
+            }}
+          />
+        ))}
+      </div>
+            
             {/* Subtle grid background */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0" style={{
@@ -152,8 +181,8 @@ function Projects() {
             </div>
 
             {/* Gradient orbs */}
-            <div className="absolute top-20 right-40 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-            <div className="absolute bottom-40 left-40 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+            <div className="absolute top-20 right-40 w-96 h-96 bg-yellow-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+            <div className="absolute bottom-40 left-40 w-96 h-96 bg-yellow-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
 
             <div className='container mx-auto px-6 py-24 md:py-32 max-w-7xl relative z-10'>
                 {/* Header */}
@@ -166,14 +195,14 @@ function Projects() {
                 >
                     <span className="text-gray-600 text-sm tracking-widest uppercase">— My work</span>
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mt-4 mb-6">
-                        FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">PROJECTS</span>
+                        FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-400">PROJECTS</span>
                     </h1>
                     <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: "200px" }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.3 }}
-                        className="h-px bg-gradient-to-r from-purple-500 to-transparent"
+                        className="h-px bg-gradient-to-r from-yellow-500 to-transparent"
                     ></motion.div>
                     
                     {/* Large background number */}
