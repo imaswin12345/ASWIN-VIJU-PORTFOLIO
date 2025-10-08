@@ -126,7 +126,7 @@ const ProjectCard = ({ project, index }) => {
                     <div className="flex gap-2">
                         <motion.a
                             href={project.link}
-                            style={{textDecoration: 'none'`}}
+                            style={{textDecoration: 'none'}}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r ${project.color} rounded-lg text-white font-semibold text-xs hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300`}
