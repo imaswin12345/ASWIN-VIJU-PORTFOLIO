@@ -4,13 +4,15 @@ import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 import Viddeo from "../assets/screensho/videoapp.png"
 import Gcart from "../assets/screensho/gcart.png"
 import NFx from "../assets/screensho/netflix.png"
+import Movie from "../assets/screensho/Movie.png"
+import { Link } from 'react-router-dom';
 const projects = [
     {
         title: "VEDDIO",
         subtitle: "Media Player",
         image: Viddeo,
-        description: "A media player application featuring video upload and history tracking. Built using modern frontend architecture.",
-        tech: ["React", "Tailwind CSS", "JSON Server", "Axios"],
+        description: "Media player app with video upload and history tracking using modern frontend tech.",
+        tech: ["React", "Tailwind"],
         link: "https://video-app1.vercel.app/",
         github: "https://github.com/imaswin12345/VideoApp",
         color: "from-yellow-400 to-yellow-500"
@@ -19,8 +21,8 @@ const projects = [
         title: "G-CART",
         subtitle: "E-commerce",
         image: Gcart,
-        description: "Simple E-commerce application with wishlist, cart management, and product total calculations.",
-        tech: ["React", "Bootstrap", "Custom CSS"],
+        description: "Simple e-commerce app with wishlist, cart management, and total calculations features.",
+        tech: ["React", "Bootstrap"],
         link: "https://gcart-sigma.vercel.app/",
         github: "https://github.com/imaswin12345/Gcart",
         color: "from-yellow-500 to-yellow-500"
@@ -29,8 +31,8 @@ const projects = [
         title: "NETFLIX",
         subtitle: "UI Clone",
         image: NFx,
-        description: "A UI clone utilizing the Fetch API to dynamically load data from a fake API source.", 
-        tech: ["React", "Bootstrap", "CSS", "Fetch API"],
+        description: "Netflix UI clone using Fetch API to load dynamic data from fake sources.",
+        tech: ["React", "Bootstrap"],
         link: "https://magenta-nougat-470c6b.netlify.app/",
         github: "https://github.com/imaswin12345/NetflixClone",
         color: "from-yellow-500 to-yellow-500"
@@ -39,8 +41,18 @@ const projects = [
         title: "MEMORY",
         subtitle: "Game",
         image: "https://placehold.co/600x400/0a0a0a/60A5FA?text=MEMORY+GAME",
-        description: "A classic memory matching game to practice state management and side effects using React Hooks.", 
-        tech: ["React Hooks", "Bootstrap"],
+        description: "Classic memory matching game built to practice React Hooks state management.",
+        tech: ["React", "Bootstrap"],
+        link: "https://memorygamessss.netlify.app/",
+        github: "https://github.com/imaswin12345/memory-game",
+        color: "from-yellow-500 to-yellow-500"
+    },
+     {
+        title: "MovieApp",
+        subtitle: ".",
+        image:Movie,
+        description: "Movie search app with add-to-favorites feature using React state management.",
+        tech: ["React", "ContextAPI"],
         link: "https://memorygamessss.netlify.app/",
         github: "https://github.com/imaswin12345/memory-game",
         color: "from-yellow-500 to-yellow-500"
@@ -64,7 +76,7 @@ const ProjectCard = ({ project, index }) => {
             {/* Card Container */}
             <div className="relative overflow-hidden rounded-lg bg-gray-900/50 border border-gray-800 hover:border-gray-700 transition-all duration-500">
                 {/* Image Container */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                     <motion.img
                         src={project.image}
                         alt={project.title}
@@ -76,34 +88,34 @@ const ProjectCard = ({ project, index }) => {
                     <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                     
                     {/* Project Number */}
-                    <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-black/80 backdrop-blur-sm border border-gray-700 flex items-center justify-center">
-                        <span className="text-white font-bold text-sm">{String(index + 1).padStart(2, '0')}</span>
+                    <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/80 backdrop-blur-sm border border-gray-700 flex items-center justify-center">
+                        <span className="text-white font-bold text-xs">{String(index + 1).padStart(2, '0')}</span>
                     </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-4">
                     {/* Title */}
-                    <div className="mb-4">
-                        <h3 className="text-2xl font-bold text-white mb-1">
+                    <div className="mb-3">
+                        <h3 className="text-xl font-bold text-white mb-1">
                             {project.title}
                         </h3>
-                        <p className={`text-sm font-semibold bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}>
+                        <p className={`text-xs font-semibold bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}>
                             {project.subtitle}
                         </p>
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-400 text-xs leading-relaxed mb-3">
                         {project.description}
                     </p>
 
                     {/* Tech Stack Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-1 mb-4">
                         {project.tech.map((tech, i) => (
                             <span 
                                 key={i}
-                                className="px-3 py-1 text-xs font-medium text-gray-400 bg-gray-800/50 rounded-full border border-gray-700"
+                                className="px-2 py-1 text-xs font-medium text-gray-400 bg-gray-800/50 rounded-full border border-gray-700"
                             >
                                 {tech}
                             </span>
@@ -111,26 +123,27 @@ const ProjectCard = ({ project, index }) => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-3">
+                    <div className="flex gap-2">
                         <motion.a
                             href={project.link}
+                            style={{textDecoration: 'none'`}}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r ${project.color} rounded-lg text-white font-semibold text-sm hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300`}
+                            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r ${project.color} rounded-lg text-white font-semibold text-xs hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300`}
                             whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.98 }}
                         >
-                            View Live <ArrowUpRight className="w-4 h-4" />
+                            View Live <ArrowUpRight className="w-3 h-3" />
                         </motion.a>
                         <motion.a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-700 rounded-lg text-gray-400 hover:text-white hover:border-gray-600 font-semibold text-sm transition-all duration-300"
+                            className="flex items-center justify-center gap-2 px-3 py-2 border border-gray-700 rounded-lg text-gray-400 hover:text-white hover:border-gray-600 font-semibold text-xs transition-all duration-300"
                             whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.98 }}
                         >
-                            <Github className="w-4 h-4" />
+                            <Github className="w-3 h-3" />
                         </motion.a>
                     </div>
                 </div>
