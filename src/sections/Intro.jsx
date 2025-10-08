@@ -184,7 +184,7 @@ function Intro() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <p className="text-gray-500 text-sm tracking-widest uppercase mb-2">Portfolio</p>
-                  <p className="text-white text-xl font-semibold">2024</p>
+                  <p className="text-white text-xl font-semibold">2025</p>
                 </div>
               </div>
             </div>

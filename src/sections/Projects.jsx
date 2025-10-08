@@ -53,8 +53,8 @@ const projects = [
         image:Movie,
         description: "Movie search app with add-to-favorites feature using React state management.",
         tech: ["React", "ContextAPI"],
-        link: "https://memorygamessss.netlify.app/",
-        github: "https://github.com/imaswin12345/memory-game",
+        link: "https://movie-app-zeta-ten-71.vercel.app/",
+        github: "https://github.com/imaswin12345/Movie-app.git",
         color: "from-yellow-500 to-yellow-500"
     }
 ];
