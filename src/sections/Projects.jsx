@@ -5,13 +5,14 @@ import Viddeo from "../assets/screensho/videoapp.png"
 import Gcart from "../assets/screensho/gcart.png"
 import NFx from "../assets/screensho/netflix.png"
 import Movie from "../assets/screensho/Movie.png"
+import KittyFind from "../assets/screensho/KittyFind.png"
 import { Link } from 'react-router-dom';
 const projects = [
     {
         title: "VEDDIO",
         subtitle: "Media Player",
         image: Viddeo,
-        description: "Media player app with video upload and history tracking using modern frontend tech.",
+        description: "A modern media player application enabling video uploads, playback, and history tracking, built with React and Tailwind for a responsive and sleek user experience.",
         tech: ["React", "Tailwind"],
         link: "https://video-app1.vercel.app/",
         github: "https://github.com/imaswin12345/VideoApp",
@@ -19,9 +20,9 @@ const projects = [
     },
     {
         title: "G-CART",
-        subtitle: "E-commerce",
+        subtitle: "E-commerce Platform",
         image: Gcart,
-        description: "Simple e-commerce app with wishlist, cart management, and total calculations features.",
+        description: "A fully functional e-commerce application featuring product listing, cart management, and wishlist capabilities, developed using React and Bootstrap.",
         tech: ["React", "Bootstrap"],
         link: "https://gcart-sigma.vercel.app/",
         github: "https://github.com/imaswin12345/Gcart",
@@ -31,7 +32,7 @@ const projects = [
         title: "NETFLIX",
         subtitle: "UI Clone",
         image: NFx,
-        description: "Netflix UI clone using Fetch API to load dynamic data from fake sources.",
+        description: "A Netflix UI clone leveraging the Fetch API to dynamically render content. Built with React and Bootstrap, focusing on replicating a professional streaming interface.",
         tech: ["React", "Bootstrap"],
         link: "https://magenta-nougat-470c6b.netlify.app/",
         github: "https://github.com/imaswin12345/NetflixClone",
@@ -39,25 +40,26 @@ const projects = [
     },
     {
         title: "MEMORY",
-        subtitle: "Game",
+        subtitle: "Interactive Game",
         image: "https://placehold.co/600x400/0a0a0a/60A5FA?text=MEMORY+GAME",
-        description: "Classic memory matching game built to practice React Hooks state management.",
+        description: "A classic memory matching game designed to demonstrate proficiency in React Hooks and state management, providing an engaging user experience.",
         tech: ["React", "Bootstrap"],
         link: "https://memorygamessss.netlify.app/",
         github: "https://github.com/imaswin12345/memory-game",
         color: "from-yellow-500 to-yellow-500"
     },
-     {
-        title: "MovieApp",
-        subtitle: "Movie Search",
-        image:Movie,
-        description: "Movie search app with add-to-favorites feature using React state management.",
-        tech: ["React", "ContextAPI"],
-        link: "https://movie-app-zeta-ten-71.vercel.app/",
-        github: "https://github.com/imaswin12345/Movie-app.git",
+    {
+        title: "KittyFind (Still in Progress)",
+        subtitle: "Cat Rescue & Tracking App",
+        image: KittyFind,
+        description: "A community-driven application for locating and reporting abandoned or stray cats. Users can post sightings with detailed information and geolocation, facilitating rescue and awareness efforts.",
+        tech: ["MERN", "MUI"],
+        link: "https://kittyffinder.netlify.app/",
+        github: "https://github.com/imaswin12345/kittenFind-Frontend",
         color: "from-yellow-500 to-yellow-500"
     }
 ];
+
 
 const ProjectCard = ({ project, index }) => {
     return (
