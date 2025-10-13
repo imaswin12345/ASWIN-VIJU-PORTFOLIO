@@ -41,7 +41,7 @@ function ProjectCard({ title, image, description, tech, link, github, index = 0,
         
 
         {/* Wandering stars background */}
-              <div className="absolute inset-0">
+              {/* <div className="absolute inset-0">
                 {[...Array(50)].map((_, i) => (
                   <motion.div
                     key={i}
@@ -66,7 +66,7 @@ function ProjectCard({ title, image, description, tech, link, github, index = 0,
                     }}
                   />
                 ))}
-              </div>
+              </div> */}
         
         {/* Image Container - Fixed height */}
         <div className="relative h-48 flex-shrink-0 overflow-hidden">

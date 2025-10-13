@@ -62,7 +62,7 @@ const SkillCard = ({ category, index }) => {
       <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900/50 to-gray-900/30 border border-gray-800 hover:border-gray-700 transition-all duration-500 backdrop-blur-sm p-6">
        
       {/* Wandering stars background */}
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
@@ -87,7 +87,7 @@ const SkillCard = ({ category, index }) => {
             }}
           />
         ))}
-      </div>
+      </div> */}
        
         {/* Icon and Title */}
         <div className="flex items-center gap-4 mb-6">

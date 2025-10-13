@@ -49,7 +49,7 @@ const projects = [
     },
      {
         title: "MovieApp",
-        subtitle: ".",
+        subtitle: "Movie Search",
         image:Movie,
         description: "Movie search app with add-to-favorites feature using React state management.",
         tech: ["React", "ContextAPI"],
