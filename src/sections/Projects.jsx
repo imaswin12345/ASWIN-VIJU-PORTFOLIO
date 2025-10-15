@@ -54,7 +54,7 @@ const projects = [
         image: KittyFind,
         description: "A community-driven application for locating and reporting abandoned or stray cats. Users can post sightings with detailed information and geolocation, facilitating rescue and awareness efforts.",
         tech: ["MERN", "MUI"],
-        link: "https://kittyffinder.netlify.app/",
+        link: "https://kittenfind-frontend0.onrender.com/",
         github: "https://github.com/imaswin12345/kittenFind-Frontend",
         color: "from-yellow-500 to-yellow-500"
     }
