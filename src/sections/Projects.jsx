@@ -6,6 +6,7 @@ import Gcart from "../assets/screensho/gcart.png"
 import NFx from "../assets/screensho/netflix.png"
 import Movie from "../assets/screensho/Movie.png"
 import KittyFind from "../assets/screensho/KittyFind.png"
+import Casco from "../assets/screensho/Casco.png"
 import { Link } from 'react-router-dom';
 const projects = [
     {
@@ -57,8 +58,29 @@ const projects = [
         link: "https://kittenfind-frontend0.onrender.com/",
         github: "https://github.com/imaswin12345/kittenFind-Frontend",
         color: "from-yellow-500 to-yellow-500"
+    },
+       {
+        title: "Movie Finder",
+        subtitle: "Movie Search Application",
+        image: Movie,
+        description: "A movie search application that allows users to find information about their favorite films. Built with React and the TMDB API.",
+        tech: ["React", "TMDB API"],
+        link: "https://movie-app-zeta-ten-71.vercel.app/",
+        github: "https://github.com/imaswin12345/Movie-app.git",
+        color: "from-yellow-500 to-yellow-500"
+    },
+           {
+        title: "Casco Tours and Travels",
+        subtitle: "Simple Travel Agency Website",
+        image: Casco,
+        description: "A simple travel agency website built with React and Bootstrap, allowing users to explore various travel packages and book their trips.",
+        tech: ["HTML", "CSS"],
+        link: "https://cascotours.netlify.app/",
+        github: "https://github.com/imaswin12345/Casco",
+        color: "from-yellow-500 to-yellow-500"
     }
 ];
+
 
 
 const ProjectCard = ({ project, index }) => {
