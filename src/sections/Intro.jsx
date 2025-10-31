@@ -57,7 +57,7 @@ function Intro() {
       id="aswin"
     >
       {/* Wandering stars background */}
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
@@ -82,7 +82,7 @@ function Intro() {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Gradient orbs for depth */}
       <div className="absolute top-20 right-20 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>

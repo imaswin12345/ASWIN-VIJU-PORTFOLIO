@@ -20,7 +20,7 @@ function Footer() {
       {/* Subtle gradient at top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
         {/* Wandering stars background */}
-            <div className="absolute inset-0">
+            {/* <div className="absolute inset-0">
               {[...Array(50)].map((_, i) => (
                 <motion.div
                   key={i}
@@ -45,7 +45,7 @@ function Footer() {
                   }}
                 />
               ))}
-            </div>
+            </div> */}
 
       <div className="container mx-auto px-6 py-12 max-w-7xl relative z-10">
         <div className="flex flex-col items-center">

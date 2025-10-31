@@ -136,7 +136,7 @@ function Skills() {
   return (
     <div id='skills' className='min-h-screen bg-black text-white relative overflow-hidden'>
       {/* Wandering stars background */}
-            <div className="absolute inset-0">
+            {/* <div className="absolute inset-0">
               {[...Array(50)].map((_, i) => (
                 <motion.div
                   key={i}
@@ -161,7 +161,7 @@ function Skills() {
                   }}
                 />
               ))}
-            </div>
+            </div> */}
       
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-5">

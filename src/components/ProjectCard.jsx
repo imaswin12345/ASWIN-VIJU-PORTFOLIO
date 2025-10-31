@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, ArrowUpRight, Code, Layers } from 'lucide-react';
+import { Github, ExternalLink, ArrowUpRight, Sparkles } from 'lucide-react';
 
-function ProjectCard({ title, image, description, tech, link, github, index = 0, gradient = "from-yellow-400 to-yellow-500" }) {
+function ProjectCard({ title, subtitle, image, description, tech, link, github, index = 0, gradient = "from-emerald-400 via-teal-500 to-cyan-500" }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [activeTech, setActiveTech] = useState(null);
 
   const item = {
     hidden: { y: 50, opacity: 0 },
@@ -12,167 +13,198 @@ function ProjectCard({ title, image, description, tech, link, github, index = 0,
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 12,
-        duration: 0.8,
-        delay: index * 0.1
+        stiffness: 120,
+        damping: 15,
+        duration: 0.6,
+        delay: index * 0.05
       }
     }
   };
 
-  // Assume tech is an array of strings; if string, split by comma
   const techArray = Array.isArray(tech) ? tech : tech.split(',').map(t => t.trim());
 
   return (
-    <motion.div 
+    <motion.section 
+      role="article"
+      aria-labelledby={`project-title-${index}`}
       variants={item}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      className="group relative h-[28rem]"
+      viewport={{ once: true, margin: "-100px" }}
+      className="group relative h-[34rem] md:h-[30rem] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-700 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setActiveTech(null);
+      }}
     >
-      {/* Main Card Container */}
-      <div className="relative h-full overflow-hidden rounded-xl bg-gradient-to-br from-gray-900/50 to-gray-900/30 border border-gray-800 hover:border-gray-700 transition-all duration-500 backdrop-blur-sm">
+      {/* Outer glow effect */}
+      <motion.div
+        className="absolute inset-0 rounded-3xl -z-10 opacity-0 group-hover:opacity-100"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        <div className={`absolute inset-[-3px] bg-gradient-to-r ${gradient} rounded-3xl opacity-60 blur-xl`}></div>
+      </motion.div>
+
+      {/* Main content */}
+      <div className="relative h-full flex flex-col">
         
-        {/* Animated border glow */}
-        <motion.div
-          className="absolute inset-0 rounded-xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className={`absolute inset-[-1px] bg-gradient-to-r ${gradient} rounded-xl blur-sm`}></div>
-        </motion.div>
-
-        {/* Content wrapper */}
-        <div className="relative h-full bg-gradient-to-br from-gray-900/50 to-gray-900/30 rounded-xl overflow-hidden flex flex-col">
+        {/* Hero Image */}
+        <div className="relative h-56 md:h-60 flex-shrink-0 overflow-hidden">
+          <motion.img
+            src={image}
+            alt={`${title} project showcase`}
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          />
           
-          {/* Image Section - Fixed height */}
-          <div className="relative h-48 flex-shrink-0 overflow-hidden">
-            <motion.img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover"
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-            />
-            
-            {/* Gradient Overlay on Hover */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
-            
-            {/* Project number badge */}
-            <motion.div 
-              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/80 backdrop-blur-sm border border-gray-700 flex items-center justify-center z-10"
-              whileHover={{ rotate: 360, scale: 1.1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="text-white font-bold text-xs">{String(index + 1).padStart(2, '0')}</span>
-            </motion.div>
+          {/* Dynamic overlay */}
+          <div className={`absolute inset-0 bg-gradient-to-b from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-600`}></div>
+          
+          {/* Index badge with sparkle */}
+          <motion.div 
+            className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-black/20 backdrop-blur-md border border-white/30 flex items-center justify-center shadow-md z-10"
+            initial={{ scale: 0.8, rotate: -10 }}
+            animate={{ scale: 1, rotate: 0 }}
+            whileHover={{ scale: 1.15 }}
+            transition={{ type: "spring", stiffness: 350 }}
+          >
+            <span className="text-white font-bold text-lg">{index + 1}</span>
+            <Sparkles className="absolute w-4 h-4 text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
 
-            {/* Hover overlay icons */}
-            <AnimatePresence>
-              {isHovered && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center gap-4"
+          {/* Interactive hover panel */}
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="absolute inset-0 flex items-center justify-center gap-8 bg-black/50 backdrop-blur-md"
+              >
+                <motion.a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Launch ${title}`}
+                  className="w-14 h-14 rounded-2xl bg-white/10 hover:bg-white/90 text-white hover:text-black flex items-center justify-center transition-all duration-300 shadow-xl"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  whileHover={{ y: -4, scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {link && (
-                    <motion.a
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </motion.a>
-                  )}
-                  {github && (
-                    <motion.a
-                      href={github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
-                      initial={{ scale: 0, rotate: 180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Github className="w-4 h-4" />
-                    </motion.a>
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  <ExternalLink className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href={github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`GitHub repo for ${title}`}
+                  className="w-14 h-14 rounded-2xl bg-white/10 hover:bg-white/90 text-white hover:text-black flex items-center justify-center transition-all duration-300 shadow-xl"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  whileHover={{ y: -4, scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Github className="w-5 h-5" />
+                </motion.a>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
-            {/* Top left corner accent */}
-            <div className="absolute top-0 left-0 w-20 h-20">
-              <div className={`absolute top-0 left-0 w-full h-full bg-gradient-to-br ${gradient} opacity-10 rounded-br-full`}></div>
-            </div>
-          </div>
-
-          {/* Content Section - Takes remaining height */}
-          <div className="p-4 relative flex-1 flex flex-col overflow-hidden">
-            {/* Subtle glow effect */}
-            <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent`}></div>
-            
-            {/* Title */}
+        {/* Body Content */}
+        <div className="p-6 md:p-7 flex-1 flex flex-col">
+          
+          {/* Title & Subtitle */}
+          <div className="mb-4 space-y-1">
+            {subtitle && (
+              <motion.span 
+                className="inline-block px-2 py-1 text-xs font-medium text-emerald-400 bg-emerald-500/10 rounded-full"
+                initial={{ x: -20, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.1, type: "spring" }}
+              >
+                {subtitle}
+              </motion.span>
+            )}
             <motion.h3 
-              className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-pink-400 transition-all duration-300 flex-shrink-0"
-              whileHover={{ x: 5 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              id={`project-title-${index}`}
+              className="text-2xl md:text-3xl font-bold text-white leading-snug group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${gradient} transition-all duration-700"
+              initial={{ y: 10, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -2 }}
             >
               {title}
             </motion.h3>
+          </div>
 
-            {/* Description */}
-            <p className="text-gray-400 text-xs leading-relaxed mb-3 line-clamp-3 flex-grow">
-              {description}
-            </p>
+          {/* Description */}
+          <motion.p 
+            className="text-gray-300 text-base font-s leading-relaxed mb-6 line-clamp-4"
+            initial={{ y: 10, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            {description}
+          </motion.p>
 
-            {/* Tech Stack */}
-            <div className="mb-4 flex-shrink-0">
-              <span className={`text-xs font-semibold uppercase tracking-wider bg-gradient-to-r ${gradient} bg-clip-text text-transparent block mb-1`}>
-                Tech Stack
-              </span>
-              <div className="flex flex-wrap gap-1">
-                {techArray.map((tech, i) => (
-                  <motion.span 
-                    key={i}
-                    className="px-2 py-1 text-xs font-medium text-gray-400 bg-gray-800/50 rounded-full border border-gray-700"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
+          {/* Interactive Tech Chips */}
+          <motion.div 
+            className="mb-6"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            {/* <span className="text-sm font-semibold text-gray-400 uppercase tracking-wide block mb-3">Built with</span> */}
+            {/* <div className="flex flex-wrap gap-2">
+              {techArray.map((techItem, i) => (
+                <motion.button
+                  key={i}
+                  type="button"
+                  onMouseEnter={() => setActiveTech(i)}
+                  className={`px-3 py-2 text-sm font-medium rounded-full border-2 transition-all duration-300 ${
+                    activeTech === i 
+                      ? `border-${gradient.split('from-')[1]?.split('-')[0] || 'emerald'}-400 bg-${gradient.split('from-')[1]?.split('-')[0] || 'emerald'}-500/10 text-${gradient.split('from-')[1]?.split('-')[0] || 'emerald'}-400` 
+                      : 'border-gray-600 text-gray-400 hover:border-gray-500'
+                  }`}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  role="button"
+                  aria-label={`Technology: ${techItem}`}
+                >
+                  {techItem}
+                </motion.button>
+              ))}
+            </div> */}
+          </motion.div>
 
-            {/* Divider */}
-            <div className="h-px bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 mb-4 flex-shrink-0"></div>
-
-            {/* Action Buttons - Fixed space */}
-            <div className="flex gap-2 flex-shrink-0">
+          {/* CTA Bar */}
+          <motion.div 
+            className="flex items-center justify-between pt-4 border-t border-gray-800/50"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            {/* <span className="text-xs text-gray-500">Live & Open Source</span> */}
+            {/* <div className="flex gap-3">
               {link && (
                 <motion.a
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r ${gradient} rounded-lg text-white font-semibold text-xs hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300`}
-                  whileHover={{ y: -2, scale: 1.02 }}
+                  className={`px-6 py-3 rounded-2xl text-sm font-semibold bg-gradient-to-r ${gradient} text-white hover:shadow-2xl hover:shadow-${gradient.split('from-')[1]?.split('-')[0] || 'emerald'}-500/30 transition-all duration-400`}
+                  whileHover={{ y: -3, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  View Live <ArrowUpRight className="w-3 h-3" />
+                  Explore <ArrowUpRight className="w-4 h-4 inline ml-1" />
                 </motion.a>
               )}
               {github && (
@@ -180,57 +212,49 @@ function ProjectCard({ title, image, description, tech, link, github, index = 0,
                   href={github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-3 py-2 border border-gray-700 rounded-lg text-gray-400 hover:text-white hover:border-gray-600 hover:bg-gray-800/50 font-semibold text-xs transition-all duration-300"
-                  whileHover={{ y: -2, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-all duration-300"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Github className="w-3 h-3" /> Code
+                  <Github className="w-5 h-5" />
                 </motion.a>
               )}
-            </div>
-          </div>
-
-          {/* Bottom corner accent */}
-          <div className="absolute bottom-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <motion.div 
-              className={`absolute bottom-0 right-0 w-full h-full bg-gradient-to-tl ${gradient} opacity-5 rounded-tl-full`}
-              animate={{ opacity: isHovered ? 1 : 0.3 }}
-              transition={{ duration: 0.3 }}
-            ></motion.div>
-          </div>
-
-          {/* Animated particles */}
-          <AnimatePresence>
-            {isHovered && (
-              <>
-                {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1 h-1 bg-yellow-400 rounded-full pointer-events-none"
-                    initial={{ 
-                      x: Math.random() * 100 + '%',
-                      y: Math.random() * 100 + '%',
-                      opacity: 0,
-                      scale: 0
-                    }}
-                    animate={{ 
-                      y: [null, Math.random() * -100 - 50],
-                      opacity: [0, 1, 0],
-                      scale: [0, 1, 0]
-                    }}
-                    transition={{ 
-                      duration: Math.random() * 2 + 1,
-                      repeat: Infinity,
-                      delay: Math.random() * 0.5
-                    }}
-                  />
-                ))}
-              </>
-            )}
-          </AnimatePresence>
+            </div> */}
+          </motion.div>
         </div>
+
+        {/* Subtle floating elements */}
+        <AnimatePresence>
+          {isHovered && (
+            <>
+              {[0, 1, 2].map((pos) => (
+                <motion.div
+                  key={pos}
+                  className={`absolute w-2 h-2 rounded-full ${gradient} blur-sm opacity-70`}
+                  style={{
+                    top: `${20 + pos * 20}%`,
+                    right: `${10 + pos * 15}%`,
+                  }}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ 
+                    scale: [0, 1.2, 1], 
+                    opacity: [0, 0.7, 0.7],
+                    x: [0, -5, 0],
+                    y: [0, -3, 0]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    delay: pos * 0.2, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </>
+          )}
+        </AnimatePresence>
       </div>
-    </motion.div>
+    </motion.section>
   );
 }
 

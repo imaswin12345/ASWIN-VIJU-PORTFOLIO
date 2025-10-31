@@ -1,13 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+// --- REMOVED unused imports: Github, ExternalLink, ArrowUpRight ---
+// We don't need these in Projects.jsx anymore because they are in the imported ProjectCard.jsx
+// import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 import Viddeo from "../assets/screensho/videoapp.png"
 import Gcart from "../assets/screensho/gcart.png"
 import NFx from "../assets/screensho/netflix.png"
 import Movie from "../assets/screensho/Movie.png"
 import KittyFind from "../assets/screensho/KittyFind.png"
 import Casco from "../assets/screensho/Casco.png"
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom'; // Not used in the final component.
+
+// *** STEP 1: Import the external ProjectCard component ***
+import ProjectCard from '../components/ProjectCard'; // Assuming it's in a 'components' folder relative to 'sections'. Adjust path if necessary.
+
 const projects = [
     {
         title: "VEDDIO",
@@ -53,7 +59,7 @@ const projects = [
         title: "KittyFind (Still in Progress)",
         subtitle: "Cat Rescue & Tracking App",
         image: KittyFind,
-        description: "A community-driven application for locating and reporting abandoned or stray cats. Users can post sightings with detailed information and geolocation, facilitating rescue and awareness efforts.",
+        description: "A community-driven application for locating and reporting abandoned or stray cats. Users can post sightings with detailed information and geolocation.",
         tech: ["MERN", "MUI"],
         link: "https://kittenfind-frontend0.onrender.com/",
         github: "https://github.com/imaswin12345/kittenFind-Frontend",
@@ -73,7 +79,7 @@ const projects = [
         title: "Casco Tours and Travels",
         subtitle: "Simple Travel Agency Website",
         image: Casco,
-        description: "A simple travel agency website built with React and Bootstrap, allowing users to explore various travel packages and book their trips.",
+        description: "A simple travel agency website built with React and Bootstrap,.",
         tech: ["HTML", "CSS"],
         link: "https://cascotours.netlify.app/",
         github: "https://github.com/imaswin12345/Casco",
@@ -81,107 +87,15 @@ const projects = [
     }
 ];
 
-
-
-const ProjectCard = ({ project, index }) => {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ 
-                type: "spring", 
-                stiffness: 70, 
-                damping: 15,
-                delay: index * 0.1 
-            }}
-            className="group relative"
-        >
-            {/* Card Container */}
-            <div className="relative overflow-hidden rounded-lg bg-gray-900/50 border border-gray-800 hover:border-gray-700 transition-all duration-500">
-                {/* Image Container */}
-                <div className="relative h-48 overflow-hidden">
-                    <motion.img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                    />
-                    {/* Gradient Overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
-                    
-                    {/* Project Number */}
-                    <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/80 backdrop-blur-sm border border-gray-700 flex items-center justify-center">
-                        <span className="text-white font-bold text-xs">{String(index + 1).padStart(2, '0')}</span>
-                    </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-4">
-                    {/* Title */}
-                    <div className="mb-3">
-                        <h3 className="text-xl font-bold text-white mb-1">
-                            {project.title}
-                        </h3>
-                        <p className={`text-xs font-semibold bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}>
-                            {project.subtitle}
-                        </p>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-gray-400 text-xs leading-relaxed mb-3">
-                        {project.description}
-                    </p>
-
-                    {/* Tech Stack Tags */}
-                    <div className="flex flex-wrap gap-1 mb-4">
-                        {project.tech.map((tech, i) => (
-                            <span 
-                                key={i}
-                                className="px-2 py-1 text-xs font-medium text-gray-400 bg-gray-800/50 rounded-full border border-gray-700"
-                            >
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-2">
-                        <motion.a
-                            href={project.link}
-                            style={{textDecoration: 'none'}}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r ${project.color} rounded-lg text-white font-semibold text-xs hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300`}
-                            whileHover={{ y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                        >
-                            View Live <ArrowUpRight className="w-3 h-3" />
-                        </motion.a>
-                        <motion.a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 px-3 py-2 border border-gray-700 rounded-lg text-gray-400 hover:text-white hover:border-gray-600 font-semibold text-xs transition-all duration-300"
-                            whileHover={{ y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                        >
-                            <Github className="w-3 h-3" />
-                        </motion.a>
-                    </div>
-                </div>
-            </div>
-        </motion.div>
-    );
-};
+// *** STEP 2: REMOVE the old ProjectCard component definition from Projects.jsx ***
+// The ProjectCard component that started at line 85 has been removed.
 
 function Projects() {
     return (
         <div id='projects' className='min-h-screen bg-black text-white relative overflow-hidden'>
 
       {/* Wandering stars background */}
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
@@ -206,8 +120,8 @@ function Projects() {
             }}
           />
         ))}
-      </div>
-            
+      </div> */}
+
             {/* Subtle grid background */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0" style={{
@@ -241,7 +155,7 @@ function Projects() {
                         transition={{ duration: 1, delay: 0.3 }}
                         className="h-px bg-gradient-to-r from-yellow-500 to-transparent"
                     ></motion.div>
-                    
+
                     {/* Large background number */}
                     <motion.div
                         className="absolute right-0 top-0 text-[12rem] md:text-[16rem] font-bold text-transparent pointer-events-none"
@@ -260,7 +174,18 @@ function Projects() {
                 {/* Projects Grid */}
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {projects.map((project, index) => (
-                        <ProjectCard key={index} project={project} index={index} />
+                        // *** STEP 3: Pass individual props instead of a single 'project' object ***
+                        <ProjectCard 
+                            key={index} 
+                            index={index}
+                            title={project.title}
+                            image={project.image}
+                            description={project.description}
+                            tech={project.tech}
+                            link={project.link}
+                            github={project.github}
+                            gradient={project.color} // Renaming 'color' to 'gradient' for the new component
+                        />
                     ))}
                 </div>
             </div>

@@ -56,7 +56,7 @@ function About() {
   return (
     <div id='about' className='min-h-screen bg-black text-white relative overflow-hidden'>
       {/* Wandering stars background */}
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
@@ -85,7 +85,7 @@ function About() {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-5">
